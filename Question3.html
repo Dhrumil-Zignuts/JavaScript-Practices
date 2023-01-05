@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .main-div{
+            width: 100%;
+            /* height: calc(100vh - 16px); */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .chessboard{
+            /* height: 100vh; */
+            border: 2px solid red;
+            display: grid;
+            grid-template-columns: repeat(8, 12.5vh);
+            grid-template-rows: repeat(8, 12.5vh);
+        }
+        /* .cell{
+            height: calc(100vh/8);
+        } */
+        .black{
+            background-color: black;
+        }
+        .white{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-div">
+        <div class="chessboard"> 
+            <!-- main chess board -->
+
+        </div>
+    </div>
+    <script>
+        for(let i = 0; i < 8; i++){
+            for(let j = 0; j < 8; j++){
+                var x = $('.chessboard');
+                x.append(`<section class="cell white" id= "${i}${j}"></section>`); // set cells in the chess board
+
+                if ((i+j)%2 == 0){
+                    $(`#${i}${j}`).toggleClass('white black');  // small cells (boxes)
+                }
+            }
+        }
+        $(window).resize(function(){
+            // check the width and height for the responsive design
+            if($(document).width() > $(document).height()){
+                $('.chessboard').css("grid-template-columns","repeat(8, calc(100vh/8)"); // width is larger than height
+                $('.chessboard').css("grid-template-rows","repeat(8, calc(100vh/8)");
+
+            }else{
+                $('.chessboard').css("grid-template-columns","repeat(8, calc(100vw/8)"); // height is larger than width
+                $('.chessboard').css("grid-template-rows","repeat(8, calc(100vw/8)"); 
+                
+            }
+        });
+    </script>
+</body>
+</html>

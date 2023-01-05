@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1 Fibonnaci</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <input type="number" name="steps" id="steps" value="">
+    <button id="btn">Submit</button>
+
+    <h3 id="fibonnaci series"> Febonnaci Series is:</h3>
+    <p id="series"></p>
+    <script>
+        $(document).ready(function(){
+            $('#btn').click(function(){
+                var x = $('#steps').val(); // put the value in of input in x
+                var arr = [0,1];
+
+                if(x <= 0){
+                    $('#series').text('Please Enter Natural Number..! Like 1,2,3,...'); // validation for negative number
+                }else if(x == 1){ 
+                    $('#series').text(arr[0]);   // output for the 1 step
+                }else{ 
+                    for(var i = 2; i < x; i++){
+                        sum = arr[i-1] + arr[i-2];
+                        arr.push(sum);  // push the value in series
+                    }
+                    console.log(arr)
+                    $('#series').text(arr); // print the series
+                }
+            });
+        });
+    </script>
+</body>
+</html>
